@@ -32,7 +32,3 @@ TODO.
 ## Ansible for DevOps
 
 Check out [Ansible for DevOps](https://www.ansiblefordevops.com), which teaches you how to automate almost anything with Ansible.
-
-## Author
-
-[Jeff Geerling](https://www.jeffgeerling.com), 2020.
