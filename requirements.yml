@@ -1,0 +1,6 @@
+---
+- src: pi-os.security
+- src: pi-os.firewall
+- src: pi-os.git
+- src: pi-os.pip
+- src: pi-os.docker_arm

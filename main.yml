@@ -1,0 +1,66 @@
+---
+- hosts: pi
+  become: yes
+
+  vars_files:
+    - default.config.yml
+
+  pre_tasks:
+    - name: Include config override file, if it exists.
+      include_vars: "{{ item }}"
+      with_fileglob:
+        - config.yml
+      tags: ['always']
+
+    - import_tasks: tasks/init.yml
+
+  roles:
+    - role: pi-os.security
+      tags: ['security', 'ssh']
+
+    - role: pi-os.firewall
+      tags: ['security', 'firewall']
+
+    - role: pi-os.git
+      tags: ['git']
+
+    - role: pi-os.pip
+      tags: ['pip']
+
+    - role: pi-os.docker_arm
+      tags: ['docker']
+
+    - role: appearance
+      tags: ['appearance']
+
+    - role: input_devices
+      tags: ['input']
+
+    - role: vscodium
+      tags: ['apps', 'vscodium']
+
+    - role: github_cli
+      tags: ['apps', 'gh']
+
+    - role: evolution
+      tags: ['apps', 'evolution']
+
+    - role: rclone
+      tags: ['apps', 'rclone']
+
+    # - role: dropbox
+    #   tags: ['apps', 'dropbox']
+
+    - role: cawbird
+      tags: ['apps', 'cawbird']
+
+    - role: mirage
+      tags: ['apps', 'mirage']
+
+    - role: pidgin
+      tags: ['apps', 'pidgin']
+
+    - role: sound_recorder
+      tags: ['apps', 'sound_recorder']
+
+  tasks: []
